@@ -15,5 +15,14 @@ body{
 
 .wrapper{
     width: 50%;
+    height: 400px;
     background-color: #403d39;
+}
+
+.info{
+    df
+
+}
+.paint{
+    flex-direction: flex-end;
 }
