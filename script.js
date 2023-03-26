@@ -6,10 +6,18 @@ const archiveBtn = document.querySelector(".archive");
 const watch = document.querySelector(".watch");
 const time = document.querySelector(".time");
 const infoBtn = document.querySelector(".info");
-const paintBtn = document.querySelector(".paint");
 const timeList = document.querySelector(".time-list");
 const modalShadow = document.querySelector(".modal-shadow");
 const closeBtn = document.querySelector(".close");
+
+const paintBtn = document.querySelector(".paint");
+const colors = document.querySelector(".colors");
+const colorOne = document.querySelector(".one");
+const colorTwo = document.querySelector(".two");
+const colorThree = document.querySelector(".three");
+const colorFour = document.querySelector(".four");
+
+let root = document.documentElement;
 
 let countTime;
 let minutes = 0;
@@ -67,7 +75,7 @@ const archiveTime = () => {
 	times.forEach((el) => {
 		const liItem = document.createElement("li");
 		count++;
-		liItem.innerHTML = `Pomiar nr ${count}: <span>${el} </span>`;
+		liItem.innerHTML = `Measurement no. ${count}: <span>${el} </span>`;
 		timeList.appendChild(liItem);
 	});
 };
@@ -75,12 +83,11 @@ const archiveTime = () => {
 const infoHelp = () => {
 	if (!(modalShadow.style.display == "block")) {
 		modalShadow.style.display = "block";
-	}else{
-        modalShadow.style.display = "none";
-    }
-    modalShadow.classList.toggle('modal-anim')
+	} else {
+		modalShadow.style.display = "none";
+	}
+	modalShadow.classList.toggle("modal-anim");
 };
-
 
 startBtn.addEventListener("click", startTime);
 pauseBtn.addEventListener("click", pauseTime);
@@ -90,4 +97,23 @@ archiveBtn.addEventListener("click", archiveTime);
 infoBtn.addEventListener("click", infoHelp);
 closeBtn.addEventListener("click", infoHelp);
 
-window.addEventListener('click', e => e.target === modalShadow ? infoHelp() : false)
+window.addEventListener("click", (e) =>
+	e.target === modalShadow ? infoHelp() : false
+);
+
+colorOne.addEventListener("click", () => {
+	root.style.setProperty("--main-color", "rgb(42, 152, 22)");
+});
+colorTwo.addEventListener("click", () => {
+	root.style.setProperty("--main-color", "rgb(74, 91, 216)");
+});
+colorThree.addEventListener("click", () => {
+	root.style.setProperty("--main-color", "rgb(132, 28, 106)");
+});
+colorFour.addEventListener("click", () => {
+	root.style.setProperty("--main-color", "rgb(0, 253, 190)");
+});
+
+paintBtn.addEventListener("click", () => {
+	colors.classList.toggle("show-color")
+})
