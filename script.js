@@ -30,7 +30,7 @@ const startTime = () => {
 			seconds = 0;
 			watch.textContent = `${minutes}:00`;
 		}
-	}, 100);
+	}, 1000);
 };
 
 const pauseTime = () => {
@@ -49,7 +49,7 @@ const stopTime = () => {
 
 const deleteTime = () => {
     time.style.visibility = "hidden";
-    let times = [];
+    times = [];
 	clear();
 };
 
@@ -61,7 +61,18 @@ const clear = () => {
 	seconds = 0;
 };
 
+const archiveTime = () => {
+    timeList.textContent = "";
+    let count = 0;
+    times.forEach(el =>{
+        const liItem = document.createElement("li");
+        count++;
+        liItem.innerHTML = `Pomiar nr ${count}: <span>${el} </span>`  
+        timeList.appendChild(liItem);
+    })
+}
 startBtn.addEventListener("click", startTime);
 pauseBtn.addEventListener("click", pauseTime);
 stopBtn.addEventListener("click", stopTime);
 cancelBtn.addEventListener("click", deleteTime);
+archiveBtn.addEventListener('click', archiveTime)
