@@ -105,6 +105,7 @@ button:hover, button:focus{
     display: flex;
     justify-content: space-between;
     width: 300px;
+    font-size: 22px;
 }
 .time-list span{
     font-weight: bold;
