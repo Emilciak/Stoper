@@ -48,8 +48,8 @@ const stopTime = () => {
 };
 
 const deleteTime = () => {
-    time.style.visibility = "hidden";
-    times = [];
+	time.style.visibility = "hidden";
+	times = [];
 	clear();
 };
 
@@ -62,17 +62,32 @@ const clear = () => {
 };
 
 const archiveTime = () => {
-    timeList.textContent = "";
-    let count = 0;
-    times.forEach(el =>{
-        const liItem = document.createElement("li");
-        count++;
-        liItem.innerHTML = `Pomiar nr ${count}: <span>${el} </span>`  
-        timeList.appendChild(liItem);
-    })
-}
+	timeList.textContent = "";
+	let count = 0;
+	times.forEach((el) => {
+		const liItem = document.createElement("li");
+		count++;
+		liItem.innerHTML = `Pomiar nr ${count}: <span>${el} </span>`;
+		timeList.appendChild(liItem);
+	});
+};
+
+const infoHelp = () => {
+	if (!(modalShadow.style.display == "block")) {
+		modalShadow.style.display = "block";
+	}else{
+        modalShadow.style.display = "none";
+    }
+    modalShadow.classList.toggle('modal-anim')
+};
+
+
 startBtn.addEventListener("click", startTime);
 pauseBtn.addEventListener("click", pauseTime);
 stopBtn.addEventListener("click", stopTime);
 cancelBtn.addEventListener("click", deleteTime);
-archiveBtn.addEventListener('click', archiveTime)
+archiveBtn.addEventListener("click", archiveTime);
+infoBtn.addEventListener("click", infoHelp);
+closeBtn.addEventListener("click", infoHelp);
+
+window.addEventListener('click', e => e.target === modalShadow ? infoHelp() : false)
